@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
+    android:background="#121212"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#121212"
+    android:layout_height="match_parent">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.fragments.CriteriaFragment">
 
     <ImageView
@@ -26,7 +30,7 @@
         android:layout_marginTop="44dp"
         android:text="Let's drink?"
         android:textColor="@color/colorAccent"
-        android:textSize="40sp"
+        android:textSize="50sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/switchAlcoholicOrNot" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -71,4 +76,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nonAlcoImage" />
 
+    <ImageView
+        android:id="@+id/randomDrinkImage"
+        android:layout_width="180dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/dice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="I don't afraid anything!(Random drink)"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/randomDrinkImage" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

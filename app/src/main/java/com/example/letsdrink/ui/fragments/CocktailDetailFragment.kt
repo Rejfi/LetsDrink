@@ -81,20 +81,40 @@ class CocktailDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        cocktailViewModel.getSelectedDrink().observe(viewLifecycleOwner, Observer {
-           Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
-            detailFragDrinkName.text = it[0].strDrink
-            val listOfIngredients = getListIngredients(it)
-            detailFragCardView.removeAllViews()
-            for(i in listOfIngredients){
-                val ingredientTextView = TextView(requireContext())
-                val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure}"
-                ingredientTextView.textSize = 18f
-                ingredientTextView.text = ingConcatenate
-                detailFragCardView.addView(ingredientTextView)
-            }
-            instructionTextView.text = it[0].strInstructions
-        })
+        if(cocktailViewModel.isRandomDrinkModeActive){
+            cocktailViewModel.getRandomDrink().observe(viewLifecycleOwner, Observer {
+                Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
+                detailFragDrinkName.text = it[0].strDrink
+                val listOfIngredients = getListIngredients(it)
+                detailFragCardView.removeAllViews()
+                for(i in listOfIngredients){
+                    val ingredientTextView = TextView(requireContext())
+                    val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure}"
+                    ingredientTextView.textSize = 18f
+                    ingredientTextView.text = ingConcatenate
+                    detailFragCardView.addView(ingredientTextView)
+                }
+                instructionTextView.text = it[0].strInstructions
+            })
+
+        }else{
+            cocktailViewModel.getSelectedDrink().observe(viewLifecycleOwner, Observer {
+                Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
+                detailFragDrinkName.text = it[0].strDrink
+                val listOfIngredients = getListIngredients(it)
+                detailFragCardView.removeAllViews()
+                for(i in listOfIngredients){
+                    val ingredientTextView = TextView(requireContext())
+                    val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure}"
+                    ingredientTextView.textSize = 18f
+                    ingredientTextView.text = ingConcatenate
+                    detailFragCardView.addView(ingredientTextView)
+                }
+                instructionTextView.text = it[0].strInstructions
+            })
+        }
+
+
     }
 
 
