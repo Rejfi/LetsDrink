@@ -18,15 +18,17 @@ class CocktailActivity : AppCompatActivity() {
 
         cocktailViewModel = ViewModelProvider(this)[CocktailViewModel::class.java]
 
+        /*
         val criteriaFragment = CriteriaFragment()
-        val cocktailListFragment = CocktailListFragment()
 
         if(savedInstanceState == null){
             supportFragmentManager.beginTransaction().apply {
                 add(R.id.fragment_container, criteriaFragment, "CriteriaFragment")
-                //addToBackStack("CriteriaFragmentStack")
                 commit()
             }
         }
+
+         */
+
     }
 }

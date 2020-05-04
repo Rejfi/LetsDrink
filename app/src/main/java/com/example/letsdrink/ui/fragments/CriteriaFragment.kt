@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.letsdrink.R
 import com.example.letsdrink.viewmodels.CocktailViewModel
 import kotlinx.android.synthetic.main.fragment_criteria.*
@@ -32,22 +35,12 @@ class CriteriaFragment : Fragment() {
 
         alcoImage.setOnClickListener {
             cocktailViewModel.setAlcoholicDrinkFilter(true)
-            requireActivity().supportFragmentManager.beginTransaction().apply {
-                val cocktailListFragment = CocktailListFragment()
-                replace(R.id.fragment_container,cocktailListFragment, "CocktailListFragment")
-                addToBackStack("CocktailListFragmentStack")
-                commit()
-            }
+            this.findNavController().navigate(R.id.cocktailListFragment )
         }
 
         nonAlcoImage.setOnClickListener {
             cocktailViewModel.setAlcoholicDrinkFilter(false)
-            requireActivity().supportFragmentManager.beginTransaction().apply {
-                val cocktailListFragment = CocktailListFragment()
-                replace(R.id.fragment_container,cocktailListFragment, "CocktailListFragment")
-                addToBackStack("CocktailListFragmentStack")
-                commit()
-            }
+            this.findNavController().navigate(R.id.cocktailListFragment)
 
         }
 

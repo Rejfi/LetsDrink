@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_between_fragments"
+    app:startDestination="@id/criteriaFragment">
+
+    <fragment
+        android:id="@+id/criteriaFragment"
+        android:name="com.example.letsdrink.ui.fragments.CriteriaFragment"
+        android:label="fragment_criteria"
+        tools:layout="@layout/fragment_criteria" >
+        <action
+            android:id="@+id/action_criteriaFragment_to_cocktailListFragment"
+            app:destination="@id/cocktailListFragment"
+            app:enterAnim="@anim/fragment_fast_out_extra_slow_in"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/cocktailListFragment"
+        android:name="com.example.letsdrink.ui.fragments.CocktailListFragment"
+        android:label="fragment_cocktail_list"
+        tools:layout="@layout/fragment_cocktail_list" >
+        <action
+            android:id="@+id/action_cocktailListFragment_to_cocktailDetailFragment"
+            app:destination="@id/cocktailDetailFragment"
+            app:enterAnim="@android:anim/cycle_interpolator"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/fragment_open_enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/cocktailDetailFragment"
+        android:name="com.example.letsdrink.ui.fragments.CocktailDetailFragment"
+        android:label="CocktailDetailFragment" />
+</navigation>
