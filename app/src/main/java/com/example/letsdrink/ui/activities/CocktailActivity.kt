@@ -1,17 +1,12 @@
 package com.example.letsdrink.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.letsdrink.R
-import com.example.letsdrink.network.RetrofitClient
 import com.example.letsdrink.ui.fragments.CocktailListFragment
 import com.example.letsdrink.ui.fragments.CriteriaFragment
 import com.example.letsdrink.viewmodels.CocktailViewModel
-import kotlinx.coroutines.runBlocking
 
 class CocktailActivity : AppCompatActivity() {
 

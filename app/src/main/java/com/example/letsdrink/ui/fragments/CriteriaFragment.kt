@@ -30,17 +30,27 @@ class CriteriaFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        drinkImage.setOnClickListener {
-            if(switchAlcoholicOrNot.isChecked) cocktailViewModel.setAlcoholicDrinkFilter(true)
-            else cocktailViewModel.setAlcoholicDrinkFilter(false)
-
+        alcoImage.setOnClickListener {
+            cocktailViewModel.setAlcoholicDrinkFilter(true)
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 val cocktailListFragment = CocktailListFragment()
-                replace(R.id.fragment_container,cocktailListFragment, "CocktrailListFragment")
+                replace(R.id.fragment_container,cocktailListFragment, "CocktailListFragment")
                 addToBackStack("CocktailListFragmentStack")
                 commit()
             }
         }
-    }
 
+        nonAlcoImage.setOnClickListener {
+            cocktailViewModel.setAlcoholicDrinkFilter(false)
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                val cocktailListFragment = CocktailListFragment()
+                replace(R.id.fragment_container,cocktailListFragment, "CocktailListFragment")
+                addToBackStack("CocktailListFragmentStack")
+                commit()
+            }
+
+        }
+
+    }
 }
+

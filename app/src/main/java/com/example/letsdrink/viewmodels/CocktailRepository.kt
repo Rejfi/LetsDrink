@@ -2,6 +2,7 @@ package com.example.letsdrink.viewmodels
 
 import com.example.letsdrink.data.Drinks
 import com.example.letsdrink.network.RetrofitClient
+import retrofit2.Retrofit
 
 class CocktailRepository {
     private val api = RetrofitClient.instance
