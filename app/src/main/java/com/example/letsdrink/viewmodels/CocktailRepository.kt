@@ -2,7 +2,6 @@ package com.example.letsdrink.viewmodels
 
 import com.example.letsdrink.data.Drinks
 import com.example.letsdrink.network.RetrofitClient
-import retrofit2.Retrofit
 
 class CocktailRepository {
     private val api = RetrofitClient.instance
@@ -22,4 +21,5 @@ class CocktailRepository {
     suspend fun getDrinkById(id: String): Drinks{
         return api.getDrinkById(id).await()
     }
+
 }
