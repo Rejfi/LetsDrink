@@ -6,6 +6,8 @@ import androidx.lifecycle.*
 import com.example.letsdrink.data.Drink
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import java.io.IOException
+import java.time.LocalDate
 
 class CocktailViewModel : ViewModel() {
     private val repository = CocktailRepository()
@@ -13,20 +15,40 @@ class CocktailViewModel : ViewModel() {
     private val selectedDrink = MutableLiveData<List<Drink>>()
 
     fun getRandomDrink() = liveData {
-        emit(repository.getRandomDrink().drinks)
+        try {
+            emit(repository.getRandomDrink().drinks)
+        }catch (e: IOException){
+            Log.d("Tag", e.message.toString())
+        }
+
     }
 
     fun getAlcoholicDrinks() = liveData {
-        emit(repository.getAlcoholicDrinks().drinks)
+        try {
+            emit(repository.getAlcoholicDrinks().drinks)
+        }catch (e: IOException){
+            Log.d("Tag", e.message.toString())
+        }
+
     }
 
     fun getNonAlcoholicDrinks() = liveData {
-        emit(repository.getNonAlcoholicDrinks().drinks)
+        try {
+            emit(repository.getNonAlcoholicDrinks().drinks)
+        }catch (e: IOException){
+            Log.d("Tag", e.message.toString())
+        }
+
     }
 
     fun setDrinkById(id: String) {
         CoroutineScope(viewModelScope.coroutineContext).launch {
-            selectedDrink.postValue(repository.getDrinkById(id).drinks)
+            try {
+                selectedDrink.postValue(repository.getDrinkById(id).drinks)
+            }catch (e: IOException){
+                Log.d("Tag", e.message.toString())
+            }
+
         }
     }
 

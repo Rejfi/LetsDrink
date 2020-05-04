@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.example.letsdrink.R
 import com.example.letsdrink.adapters.CocktailListAdapter
 import com.example.letsdrink.adapters.OnDrinkClickListener
 import com.example.letsdrink.viewmodels.CocktailViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_cocktail_detail.*
 import kotlinx.android.synthetic.main.fragment_cocktail_list.*
 
@@ -39,17 +41,17 @@ class CocktailListFragment : Fragment(), OnDrinkClickListener {
         super.onActivityCreated(savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        if(cocktailViewModel.getAlcoholicDrinksFilter()){
-            cocktailViewModel.getAlcoholicDrinks().observe(viewLifecycleOwner, Observer {
-                val adapter = CocktailListAdapter(it, this)
-                recyclerView.adapter = adapter
-            })
-        }else{
-            cocktailViewModel.getNonAlcoholicDrinks().observe(viewLifecycleOwner, Observer {
-                val adapter = CocktailListAdapter(it, this)
-                recyclerView.adapter = adapter
-            })
-        }
+            if(cocktailViewModel.getAlcoholicDrinksFilter()){
+                cocktailViewModel.getAlcoholicDrinks().observe(viewLifecycleOwner, Observer {
+                    val adapter = CocktailListAdapter(it, this)
+                    recyclerView.adapter = adapter
+                })
+            }else{
+                cocktailViewModel.getNonAlcoholicDrinks().observe(viewLifecycleOwner, Observer {
+                    val adapter = CocktailListAdapter(it, this)
+                    recyclerView.adapter = adapter
+                })
+            }
 
     }
 

@@ -109,12 +109,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/instructionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:ellipsize="end"
                 android:hint="How to prepare drink"
                 android:textSize="18sp" />
 
