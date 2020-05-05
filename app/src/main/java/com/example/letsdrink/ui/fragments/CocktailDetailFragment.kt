@@ -1,5 +1,7 @@
 package com.example.letsdrink.ui.fragments
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -86,13 +88,10 @@ class CocktailDetailFragment : Fragment() {
                 Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
                 detailFragDrinkName.text = it[0].strDrink
                 val listOfIngredients = getListIngredients(it)
-                detailFragCardView.removeAllViews()
+                //detailFragCardView.removeAllViews()
                 for(i in listOfIngredients){
-                    val ingredientTextView = TextView(requireContext())
-                    val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure}"
-                    ingredientTextView.textSize = 18f
-                    ingredientTextView.text = ingConcatenate
-                    detailFragCardView.addView(ingredientTextView)
+                    val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure} \n"
+                    detailFragIngredientTextView.append(ingConcatenate)
                 }
                 instructionTextView.text = it[0].strInstructions
             })
@@ -102,13 +101,10 @@ class CocktailDetailFragment : Fragment() {
                 Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
                 detailFragDrinkName.text = it[0].strDrink
                 val listOfIngredients = getListIngredients(it)
-                detailFragCardView.removeAllViews()
+                // detailFragCardView.removeAllViews()
                 for(i in listOfIngredients){
-                    val ingredientTextView = TextView(requireContext())
-                    val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure}"
-                    ingredientTextView.textSize = 18f
-                    ingredientTextView.text = ingConcatenate
-                    detailFragCardView.addView(ingredientTextView)
+                    val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure} \n"
+                    detailFragIngredientTextView.append(ingConcatenate)
                 }
                 instructionTextView.text = it[0].strInstructions
             })
