@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/blk_chcry"
-        android:text="Ingridients"
+        android:text="Ingredients"
         android:textColor="@color/colorAccent"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
-        android:text="I don't afraid anything!(Random drink)"
+        android:text="I'm not afraid of anything! (Random drink)"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold|italic"
