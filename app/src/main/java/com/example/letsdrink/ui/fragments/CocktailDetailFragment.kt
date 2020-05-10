@@ -3,11 +3,13 @@ package com.example.letsdrink.ui.fragments
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.letsdrink.R
@@ -16,53 +18,6 @@ import com.example.letsdrink.data.Ingredient
 import com.example.letsdrink.viewmodels.CocktailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_cocktail_detail.*
-/**
-{
-    "drinks": [
-    {
-        "idDrink": "11007",
-        "strDrink": "Margarita",
-        "strTags": "IBA,ContemporaryClassic",
-        "strCategory": "Ordinary Drink",
-        "strIBA": "Contemporary Classics",
-        "strAlcoholic": "Alcoholic",
-        "strGlass": "Cocktail glass",
-        "strInstructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
-        "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg",
-        "strIngredient1": "Tequila",
-        "strIngredient2": "Triple sec",
-        "strIngredient3": "Lime juice",
-        "strIngredient4": "Salt",
-        "strIngredient5": null,
-        "strIngredient6": null,
-        "strIngredient7": null,
-        "strIngredient8": null,
-        "strIngredient9": null,
-        "strIngredient10": null,
-        "strIngredient11": null,
-        "strIngredient12": null,
-        "strIngredient13": null,
-        "strIngredient14": null,
-        "strIngredient15": null,
-        "strMeasure1": "1 1/2 oz ",
-        "strMeasure2": "1/2 oz ",
-        "strMeasure3": "1 oz ",
-        "strMeasure4": null,
-        "strMeasure5": null,
-        "strMeasure6": null,
-        "strMeasure7": null,
-        "strMeasure8": null,
-        "strMeasure9": null,
-        "strMeasure10": null,
-        "strMeasure11": null,
-        "strMeasure12": null,
-        "strMeasure13": null,
-        "strMeasure14": null,
-        "strMeasure15": null,
-    }
-    ]
-}
-*/
 
 class CocktailDetailFragment : Fragment() {
 
@@ -88,20 +43,20 @@ class CocktailDetailFragment : Fragment() {
                 Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
                 detailFragDrinkName.text = it[0].strDrink
                 val listOfIngredients = getListIngredients(it)
-                //detailFragCardView.removeAllViews()
                 for(i in listOfIngredients){
                     val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure} \n"
                     detailFragIngredientTextView.append(ingConcatenate)
                 }
                 instructionTextView.text = it[0].strInstructions
+                cocktailViewModel.setSelectedDrink(it)
             })
 
-        }else{
+        }
+        else{
             cocktailViewModel.getSelectedDrink().observe(viewLifecycleOwner, Observer {
                 Picasso.get().load(it[0].strDrinkThumb).into(detailFragImage)
                 detailFragDrinkName.text = it[0].strDrink
                 val listOfIngredients = getListIngredients(it)
-                // detailFragCardView.removeAllViews()
                 for(i in listOfIngredients){
                     val ingConcatenate = "${i.ingrName} - ${i.ingrMeasure} \n"
                     detailFragIngredientTextView.append(ingConcatenate)
@@ -110,6 +65,10 @@ class CocktailDetailFragment : Fragment() {
             })
         }
 
+        favouriteFloatBT.setOnClickListener{
+            cocktailViewModel.insertFavDrink(cocktailViewModel.getSelectedDrink().value!![0])
+            cocktailViewModel.loadFavouriteDrinks()
+        }
 
     }
 

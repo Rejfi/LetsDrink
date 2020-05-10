@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.letsdrink.R
+import com.example.letsdrink.data.Drink
 import com.example.letsdrink.ui.fragments.CocktailListFragment
 import com.example.letsdrink.ui.fragments.CriteriaFragment
 import com.example.letsdrink.viewmodels.CocktailViewModel
@@ -18,17 +19,6 @@ class CocktailActivity : AppCompatActivity() {
 
         cocktailViewModel = ViewModelProvider(this)[CocktailViewModel::class.java]
 
-        /*
-        val criteriaFragment = CriteriaFragment()
-
-        if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction().apply {
-                add(R.id.fragment_container, criteriaFragment, "CriteriaFragment")
-                commit()
-            }
-        }
-
-         */
 
     }
 }

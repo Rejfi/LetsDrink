@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_criteriaFragment_to_cocktailDetailFragment"
             app:destination="@id/cocktailDetailFragment" />
+        <action
+            android:id="@+id/action_criteriaFragment_to_cocktailFavListFragment"
+            app:destination="@id/cocktailFavListFragment" />
     </fragment>
     <fragment
         android:id="@+id/cocktailListFragment"
@@ -37,4 +40,9 @@
         android:id="@+id/cocktailDetailFragment"
         android:name="com.example.letsdrink.ui.fragments.CocktailDetailFragment"
         android:label="CocktailDetailFragment" />
+    <fragment
+        android:id="@+id/cocktailFavListFragment"
+        android:name="com.example.letsdrink.ui.fragments.CocktailFavListFragment"
+        android:label="fragment_cocktail_fav_list"
+        tools:layout="@layout/fragment_cocktail_fav_list" />
 </navigation>

@@ -1,8 +1,14 @@
 package com.example.letsdrink.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "FavouriteDrinksTable")
 data class Drink(
+    val favourite: Boolean = false,
     val dateModified: String?,
-    val idDrink: String?,
+    @PrimaryKey
+    val idDrink: String,
     val strAlcoholic: String?,
     val strCategory: String?,
     val strCreativeCommonsConfirmed: String?,

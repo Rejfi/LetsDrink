@@ -1,146 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:background="#121212"
-    android:layout_width="match_parent"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.fragments.CocktailDetailFragment">
-
-    <TextView
-        android:id="@+id/detailFragDrinkName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/blk_chcry"
-        android:gravity="center"
-        android:hint="Drink Name"
-        android:textColor="@color/colorAccent"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/favouriteFloatBT"
+        android:src="@drawable/star_empty"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailFragDrinkName">
+        app:layout_anchor="@+id/scrollView2"
+        app:layout_anchorGravity="end|bottom" />
 
-
-        <ImageView
-            android:id="@+id/detailFragImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/blk_chcry"
-        android:text="Ingredients"
-        android:textColor="@color/colorAccent"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:background="#121212">
 
-        <LinearLayout
-            android:background="@drawable/custom_shelf"
-            android:id="@+id/detailFragCardView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_margin="10dp"
+            tools:context=".ui.fragments.CocktailDetailFragment">
 
             <TextView
-                android:textSize="20sp"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:id="@+id/detailFragIngredientTextView"
+                android:id="@+id/detailFragDrinkName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/blk_chcry"
+                android:gravity="center"
+                android:hint="Drink Name"
+                android:textColor="@color/colorAccent"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/instructionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/blk_chcry"
-        android:text="Instruction"
-        android:textColor="@color/colorAccent"
-        android:textSize="36sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instructionText">
-
-        <LinearLayout
-            android:background="@drawable/custom_shelf"
-            android:id="@+id/detailFragInstruction"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <TextView
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:id="@+id/instructionTextView"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elegantTextHeight="true"
-                android:ellipsize="end"
-                android:hint="How to prepare drink"
-                android:textSize="20sp" />
+                android:layout_margin="20dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailFragDrinkName">
 
-        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/detailFragImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-</ScrollView>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/blk_chcry"
+                android:text="Ingredients"
+                android:textColor="@color/colorAccent"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <LinearLayout
+                    android:id="@+id/detailFragCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_shelf"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/detailFragIngredientTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/instructionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/blk_chcry"
+                android:text="Instruction"
+                android:textColor="@color/colorAccent"
+                android:textSize="36sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructionText">
+
+                <LinearLayout
+
+                    android:id="@+id/detailFragInstruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_shelf"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/instructionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:elegantTextHeight="true"
+                        android:ellipsize="end"
+                        android:hint="How to prepare drink"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

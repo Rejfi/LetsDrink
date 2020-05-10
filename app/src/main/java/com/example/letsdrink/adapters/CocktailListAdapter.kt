@@ -32,16 +32,21 @@ class CocktailListAdapter(private val drinkList: List<Drink>,
     inner class CocktailViewHolder(view: View): RecyclerView.ViewHolder(view) {
         init {
             itemView.setOnClickListener{
-                onDrinkClickListener.onDrinkClick(adapterPosition, drinkList[adapterPosition].idDrink!!)
+                onDrinkClickListener.onDrinkClick(adapterPosition, drinkList[adapterPosition].idDrink!!, getItemAtPosition(adapterPosition) )
             }
         }
 
         val cocktailImage: ImageView = itemView.findViewById(R.id.drinkListImage)
         val cocktailName: TextView = itemView.findViewById(R.id.drinkListName)
     }
+
+
+    fun getItemAtPosition(position: Int):Drink{
+        return drinkList[position]
+    }
 }
 
 interface OnDrinkClickListener{
-    fun onDrinkClick(position: Int, id: String)
+    fun onDrinkClick(position: Int, id: String, drink: Drink)
 }
 

@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.letsdrink.R
 import com.example.letsdrink.adapters.CocktailListAdapter
 import com.example.letsdrink.adapters.OnDrinkClickListener
+import com.example.letsdrink.data.Drink
+import com.example.letsdrink.isOnline
 import com.example.letsdrink.viewmodels.CocktailViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_cocktail_list.*
@@ -24,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_cocktail_list.*
 class CocktailListFragment : Fragment(), OnDrinkClickListener {
 
     private lateinit var cocktailViewModel: CocktailViewModel
-    private var isOnline: Boolean = false;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,16 +67,12 @@ class CocktailListFragment : Fragment(), OnDrinkClickListener {
             }
     }
 
-    override fun onDrinkClick(position: Int, id: String) {
-        if(!isOnline){
+    override fun onDrinkClick(position: Int, id: String, drink: Drink) {
+        if(requireActivity().application.isOnline()){
             cocktailViewModel.loadDrinkById(id)
             this.findNavController().navigate(R.id.cocktailDetailFragment)
         } else Snackbar.make(requireView(), "Not internet - not drinking. Srrrrry", Snackbar.LENGTH_LONG).show()
 
     }
 
-    private fun isOnline(): Boolean {
-        val cm = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return cm.isActiveNetworkMetered && cm.isDefaultNetworkActive
-    }
 }
